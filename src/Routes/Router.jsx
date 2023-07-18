@@ -3,6 +3,8 @@ import Main from "../Layout/Main";
 import ErrorPage from "../Components/ErrorPage/Errorpage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import { SignalIcon } from "@heroicons/react/24/solid";
+import Signup from "../Pages/Signup/Signup";
 
 
 const routes = createBrowserRouter([
@@ -18,6 +20,10 @@ const routes = createBrowserRouter([
             {
                 path: '/login', 
                 element: <Login></Login>
+            }, 
+            {
+                path: '/signup', 
+                element: <Signup></Signup>
             }
         ]
 

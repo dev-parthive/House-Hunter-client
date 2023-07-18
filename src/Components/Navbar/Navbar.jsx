@@ -27,7 +27,7 @@ const user = undefined;
   };
 
   return (
-    <header className="text-gray-900 shadow-md">
+    <header className="text-gray-900 shadow-sm">
       <div className="mx-auto flex flex-wrap py-3 px-2 md:py-5 md:px-20 flex-row md:flex-row justify-between items-center">
         <Link to="/" className="mb-3 md:mb-0">
           <span className="ml-3 text-2xl font-medium items-center text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-lime-500 mb-4 md:mb-0">
@@ -40,7 +40,7 @@ const user = undefined;
           ) : (
             <div className="mr-3 hidden md:block">
               <Link to="/login" className="ml-5">
-                <PrimaryButton classes="rounded-full px-2 py-2">
+                <PrimaryButton classes="rounded-full px-4 py-2">
                   Login
                 </PrimaryButton>
               </Link>
@@ -58,13 +58,13 @@ const user = undefined;
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="currentColor"
                     className="w-6 h-6"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>

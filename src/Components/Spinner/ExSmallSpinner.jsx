@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 const ExSmallSpinner = () => {
-  return (
-    <div className='flex justify-center items-center h-full'>
-      <div className='w-6 h-6 border-2 border-dashed rounded-full animate-spin border-white'></div>
-    </div>
-  )
-}
+    return (
+        <div className=' md:ml-64 '>
+            <div className='flex justify-center items-center '>
+        <div className='  w-9 h-9 border-8 border-dashed  rounded-full animate-spin mt-3 border-green-400'></div>
+</div>
+        </div>
+    );
+};
 
 export default ExSmallSpinner;

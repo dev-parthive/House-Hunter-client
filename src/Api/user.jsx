@@ -1,28 +1,11 @@
-export const hostRequest = async user => {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/user/${user?.email}`,
-      {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json',
-          authorization: `Bearer ${localStorage.getItem('aircnc-token')}`,
-        },
-        body: JSON.stringify(user),
-      }
-    )
-    const data = await response.json()
-    console.log(data)
-    return data
-  }
-  
+
   export const getRole = async email => {
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/user/${email}`,
+      `${import.meta.env.VITE_REACT_APP_API_URL}/user/${email}`,
       {
         method: 'GET',
         headers: {
           'content-type': 'application/json',
-          authorization: `Bearer ${localStorage.getItem('aircnc-token')}`,
         },
       }
     )

@@ -2,7 +2,7 @@ import { FingerPrintIcon, UserPlusIcon } from '@heroicons/react/24/solid'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const HostMenu = () => {
+const OwnersMenu = () => {
   return (
     <>
       <NavLink
@@ -34,4 +34,4 @@ const HostMenu = () => {
   )
 }
 
-export default HostMenu
+export default OwnersMenu

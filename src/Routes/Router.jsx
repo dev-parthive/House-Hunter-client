@@ -8,6 +8,8 @@ import CommingSoon from "../Components/CommingSoon/CommingSoon";
 import SearchResult from "../Pages/SearchResult/SeasrchResult";
 import DashboardLayout from "../Layout/DashobardLayout";
 import Welcome from "../Pages/Dashboard/Welcome";
+import Details from "../Pages/Details/Details";
+import Checkout from "../Components/Checkout/Chekout";
 
 
 const routes = createBrowserRouter([
@@ -35,6 +37,14 @@ const routes = createBrowserRouter([
             {
                 path: '/search-result', 
                 element: <SearchResult></SearchResult>
+            }, 
+            {
+                path: '/service-details/', 
+                element: <Details></Details>
+            }, 
+            {
+                path: '/checkout', 
+                element: <Checkout></Checkout>
             }
         ]
 

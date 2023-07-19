@@ -3,12 +3,12 @@ import { ArrowRightOnRectangleIcon, Bars3Icon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom'
 import PrimaryButton from '../PrimaryButton/PrimaryButton'
 import { AuthContext } from '../../Contexts/AuthProvider'
-import UserMenu from './RentersMenu'
 import AdminMenu from './AdminMenu'
 import RenterMenu from './RentersMenu'
+import OwnersMenu from './OwnersMenu'
 
 const Sidebar = ({ role, loading }) => {
-  const { user, logout } = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext)
   const [isActive, setActive] = useState('false')
 
   // Sidebar Responsive Handler
@@ -48,14 +48,14 @@ const Sidebar = ({ role, loading }) => {
               <Link to='/dashboard'>
                 <img
                   className='object-cover w-24 h-24 mx-2 rounded-full'
-                  src={user?.photoURL}
+                  src={user?.userInfo?.image}
                   alt='avatar'
                   referrerPolicy='no-referrer'
                 />
               </Link>
               <Link to='/dashboard'>
                 <h4 className='mx-2 mt-2 font-medium text-gray-800  hover:underline'>
-                  {user?.displayName}
+                  {user?.userInfo?.email}
                 </h4>
               </Link>
               <Link to='/dashboard'>
@@ -69,25 +69,28 @@ const Sidebar = ({ role, loading }) => {
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
             <nav>
-              {role && role !== 'requested' ? (
-                <>{role === 'admin' ? <AdminMenu /> : <HostMenu />} </>
-              ) : (
-                <RenterMenu></RenterMenu>
-              )}
+              { role !== "admin" ? (role == "House Renter" ? 
+                <RenterMenu></RenterMenu> : <OwnersMenu></OwnersMenu>)  
+                : <AdminMenu></AdminMenu>
+              }
             </nav>
           </div>
         </div>
 
         <div>
           <hr />
-          <PrimaryButton
-            handler={logout}
+       <Link to="/">
+       <PrimaryButton
+            
             classes='flex block w-full rounded-full items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform'
           >
             <ArrowRightOnRectangleIcon className='w-5 h-5' />
 
-            <span className='mx-4 font-medium'>Logout</span>
+            <span className='mx-4 font-medium'>Home Page</span>
           </PrimaryButton>
+       
+       
+       </Link>
         </div>
       </div>
     </>

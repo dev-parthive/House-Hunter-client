@@ -7,10 +7,12 @@ import { AuthContext } from '../Contexts/AuthProvider'
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext)
   const [role, setRole] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+  console.log(user)
+  console.log(user?.userInfo?.email)
   useEffect(() => {
     setLoading(true)
-    getRole(user?.email).then(data => {
+    getRole(user?.userInfo?.email).then(data => {
       setRole(data)
       setLoading(false)
     })

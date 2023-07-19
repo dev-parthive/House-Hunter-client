@@ -4,16 +4,6 @@ import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import { AuthContext } from "../../Contexts/AuthProvider";
 const Navbar = () => {
   const {user, setUser ,logOut, getCurrentUser} = useContext(AuthContext);
-  useEffect(()=>{
-    const user =JSON.parse( localStorage.getItem('House-Hunter-User'))
-    if(user){
-      setUser(user)
-      console.log("user logedIn");
-    }else{
-      setUser(null)
-      console.log("user not loged in ")
-    }
-  }, [])
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
   console.log(isDropdownOpen);
   const navigate = useNavigate();

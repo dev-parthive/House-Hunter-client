@@ -1,12 +1,39 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import PrimaryButton from '../../Components/PrimaryButton/PrimaryButton';
-import SmallSpinner from '../../Components/Spinner/SmallSpinner';
-
+import { AuthContext } from '../../Contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     let from = location?.state?.from?.pathname || '/';
+    const {user, setUser} = useContext(AuthContext)
+    const handleLogin = (event) =>{
+        event.preventDefault()
+        const email = event.target.email.value
+        const password = event.target.password.value
+        console.log(email, password);
+        const url = `${import.meta.env.VITE_REACT_APP_API_URL}/login`
+        fetch(url, {
+            method: "POST", 
+            headers: {
+                'content-type': "application/json"
+            }, 
+            body: JSON.stringify({email, password})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data?.success == true){
+                localStorage.setItem('House-Hunter-User', JSON.stringify(data))
+                navigate(from, {replace: true})
+                window.location.reload()
+                toast.success("Login Successful")
+            }else{
+                toast.error(data?.message)
+            }
+        })
+    }
     
     return (
         <div className='flex justify-center pt-8'>
@@ -16,7 +43,7 @@ const Login = () => {
                     <h1 className='my-3 text-4xl font-bold'>Login</h1>
                     <p className='text-sm text-gray-400'>Login to access your account</p>
                 </div>
-                <form action=""
+                <form action="" onSubmit={handleLogin}
                     className='space-y-6 '>
                     <div className='space-y-4'>
                         <div>

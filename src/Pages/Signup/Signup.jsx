@@ -2,18 +2,18 @@ import React, { useContext, useState } from "react";
 import { Link, json, useLocation, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../Components/PrimaryButton/PrimaryButton";
 import SmallSpinner from "../../Components/Spinner/SmallSpinner";
-import toast from "react-hot-toast";
-import { setAuthToken } from "../../Api/auth";
-
+import { AuthContext } from "../../Contexts/AuthProvider";
+import { toast } from "react-hot-toast";
 const Signup = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   //signup
   const signUpHandler = (event) => {
     event.preventDefault();
+    setLoading(true)
     const name = event.target.name.value;
     const image = event.target.image.files[0];
     const email = event.target.email.value;
@@ -26,7 +26,6 @@ const Signup = () => {
     console.log(formData);
     formData.append("image", image);
     console.log(formData);
-    console.log(JSON.stringify(import.meta.env.VITE_REACT_APP_IMAGEBB_API));
     const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_REACT_APP_IMAGEBB_API}`;
     console.log(url);
     fetch(url, {
@@ -37,7 +36,32 @@ const Signup = () => {
       .then((data) => {
         // const photoUrl = data.data.display_url;
         console.log(data);
-      });
+
+        // create user and save in our database 
+        const url = `${import.meta.env.VITE_REACT_APP_API_URL}/signup`
+        fetch(url, {
+          method: "POST", 
+          headers: {
+            'content-type': 'application/json'
+          }, 
+          body: JSON.stringify({name, email, password, phoneNumber, role, image: data?.data?.display_url})
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          setLoading(false)
+          if(data?.success == true){
+            toast.success(data?.message)
+            localStorage.setItem('House-Hunter-User', JSON.stringify(data))
+            navigate(from , {replace: true})
+            window.location.reload()
+          }else{
+            toast.error(data?.message)
+          }
+        })
+
+
+      })
   };
   return (
     <div className="flex justify-center items-center pt-8">

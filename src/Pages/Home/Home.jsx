@@ -38,8 +38,8 @@ useEffect(()=>{
               </div>
             </div>
           </div>
-          
-            <div>
+          {/* exp cards  */}
+            {/* <div>
               <div className='flex justify-between px-4'>
                 <p className='text-xl font-bold'>Experiences</p>
                 <Link to='/coming-soon'>
@@ -48,12 +48,12 @@ useEffect(()=>{
               </div>
               <div className='container pb-8 pt-2 mx-auto'>
                 <div className='flex flex-wrap'>
-                  {/* {alExp.slice(0, 4).map((exp, i) => (
+                  {alExp.slice(0, 4).map((exp, i) => (
                     <ExpCard key={i} exp={exp} />
-                  ))} */}
+                  ))}
                 </div>
               </div>
-            </div>
+            </div> */}
         
         </div>
       </div>

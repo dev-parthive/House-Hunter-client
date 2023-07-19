@@ -24,14 +24,14 @@ const Welcome = () => {
       <div className='flex justify-center text-gray-500 items-center mt-4'>
         {!loading && role ? (
           <>
-            {role === 'admin' ? (
-              <p className='text-3xl font-medium'>Admin Dashboard</p>
+            {role === 'House Hunter' ? (
+              <p className='text-3xl font-medium'>House Hunter Dashboard</p>
             ) : (
-              <p className='text-3xl font-medium'>Host Dashboard</p>
+              <p className='text-3xl font-medium'>House Ownder Dashboard</p>
             )}
           </>
         ) : (
-          <p className='text-3xl font-medium'>User Dashboard</p>
+          <p className='text-3xl font-medium'>Admin Dashboard</p>
         )}
       </div>
     </div>

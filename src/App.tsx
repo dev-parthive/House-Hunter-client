@@ -5,7 +5,7 @@ import './App.css'
 import {AuthContext} from './Contexts/AuthProvider.jsx'
 
 function App() {
-  const {, setUser, getCurrentUser} = useContext(AuthContext)
+  const {setUser, getCurrentUser} = useContext(AuthContext)
   useEffect(()=>{
     const user = getCurrentUser()
     if(user){
